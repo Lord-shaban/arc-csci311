@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.vercel/
+research/
+*.pdf
+qa/
+*.log
+.env*

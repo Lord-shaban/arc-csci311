@@ -1,0 +1,6 @@
+research/
+qa/
+*.pdf
+tests/
+.git/
+README.md
