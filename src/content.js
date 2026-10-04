@@ -1,3 +1,5 @@
+import {glossaryEnglish} from './glossary-english.js';
+import {englishLessons,englishGroups} from './lesson-english.js';
 export const refs = {
  isa:'https://docs.riscv.org/reference/isa/v20240411/unpriv/rv32.html',
  rv64:'https://docs.riscv.org/reference/isa/v20240411/unpriv/rv64.html',
@@ -119,3 +121,22 @@ s('مراجعة قبل تسليم حل','اكتب المعطيات والافت�
 export const glossary=[
 ['ISA','Instruction Set Architecture','عقد يحدد التعليمات والـRegisters والسلوك الذي يراه البرنامج.','abstraction'],['Microarchitecture','Microarchitecture','تنفيذ الـISA في دوائر Hardware.','abstraction'],['ALU','Arithmetic Logic Unit','جزء CPU الذي ينفّذ الحساب والعمليات المنطقية.','cpu-cycle'],['CU','Control Unit','جزء ينسق التنفيذ ويرسل Control signals.','cpu-cycle'],['PC','Program Counter','Register يحمل عنوان التعليمة؛ يتقدم أو يتغير مع Branch/Jump.','cpu-cycle'],['IR','Instruction Register','يحمل bits التعليمة الجاري فكها وتنفيذها في النموذج التعليمي.','cpu-cycle'],['MAR','Memory Address Register','يحمل عنوان الموقع المراد الوصول إليه في النموذج العام.','memory-buses'],['MDR','Memory Data Register','يحمل البيانات المتبادلة مع Memory في النموذج العام.','memory-buses'],['Bus','Bus','مسار اتصال لنقل Address أوData أوControl.','memory-buses'],['CPI','Cycles Per Instruction','متوسط عدد Clock cycles لكل Instruction منفذة.','cpi-mix'],['IC','Instruction Count','عدد التعليمات المنفذة فعليًا؛ يشمل تكرارات Loops.','performance'],['Clock Rate','Clock Frequency','عدد Cycles في الثانية؛ معكوس Clock period.','performance'],['ABI','Application Binary Interface','اتفاق بين البرامج والدوال يشمل استخدام Registers وطريقة الاستدعاء.','registers'],['XLEN','Integer Register Width','عرض Integer Registers؛ 64 في RV64 و32 في RV32.','registers'],['Immediate','Immediate Operand','Constant مشفرة داخل Instruction.','arithmetic'],['Offset','Byte Offset','إزاحة بالـBytes تضاف إلى Base address.','load-store'],['Sign Extension','Sign Extension','توسيع Signed value بتكرار Sign bit.','binary'],['MUX','Multiplexer','دائرة تختار Input واحدة من عدة Inputs.','circuits'],['Flip-Flop','Flip-Flop','عنصر Sequential لتخزين bit.','circuits'],['Pseudo-instruction','Pseudo-instruction','اسم Assembly يتحول إلى Instruction أو أكثر.','assembly-basics'],['Directive','Assembler Directive','توجيه للـAssembler مثل .word، وليس عملية CPU.','assembly-basics'],['Load/Store','Load/Store Architecture','الحساب في Registers والوصول للذاكرة بتعليمات منفصلة.','load-store'],['Amdahl’s Law','Amdahl’s Law','حد التحسن عند تحسين جزء فقط من تنفيذ المهمة.','evolution'],['Two’s Complement','Two’s Complement','طريقة تمثيل Signed integers بوزن سالب لأعلى bit.','binary']
 ];
+for(const group of groups){
+ group.arabic={title:group.title,desc:group.desc};
+ Object.assign(group,englishGroups[group.id]);
+}
+for(const lesson of lessons){
+ const translation=englishLessons[lesson.id];
+ if(!translation||translation.sections.length!==lesson.sections.length)throw new Error(`Incomplete translation: ${lesson.id}`);
+ lesson.arabic={title:lesson.title,summary:lesson.summary,takeaway:lesson.takeaway};
+ lesson.title=lesson.english;
+ lesson.summary=translation.summary;
+ lesson.takeaway=translation.takeaway;
+ lesson.sections=lesson.sections.map((section,index)=>({
+  ...section,
+  arabic:{body:section.body,list:section.list,note:section.note},
+  ...translation.sections[index]
+ }));
+}
+
+for(const term of glossary){term.arabic=term[2];term[2]=glossaryEnglish[term[0]];}

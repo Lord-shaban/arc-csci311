@@ -2,16 +2,17 @@
 
 **Live site:** [arc-csci311.vercel.app](https://arc-csci311.vercel.app)
 
-An Arabic, RTL study companion for **CSCI311**. English technical terms stay in their original form. The visual direction takes inspiration from the dark editorial layout of the supplied OpenAI reference, while the content and branding are independent.
+A visual study companion for **CSCI311**, with English explanations and Arabic notes for every lesson section. English content reads left to right; Arabic notes read right to left. The visual direction takes inspiration from the dark editorial layout of the supplied OpenAI reference, while the content and branding are independent.
 
 ## What is included
 
-- 16 lessons covering Lecture 01, Lab 01, Lecture 02 and Lab 02.
+- 16 English lessons with 90 sections, each followed by Arabic explanatory notes. A lesson checkbox lets readers hide/show the Arabic notes.
+- Coverage of Lecture 01, Lab 01, Lecture 02 and Lab 02.
 - 80 original study questions, entirely in English (prompts, options, model answers and explanations): 63 multiple-choice and 17 written/calculation questions.
 - An English question bank and quiz interface, displayed left to right.
 - A random 12-question exam with submission, scoring, explanations and mistake review.
 - 11 interactive learning tools: system components, instruction cycle, logic gates, MUX, CPU performance, weighted CPI, Amdahl's law, array addressing, signed binary, RISC-V traces and instruction formats.
-- A searchable glossary, lesson completion, source page ranges and documented corrections.
+- 24 glossary entries with English definitions and Arabic notes, lesson completion, source page ranges and documented corrections.
 - Responsive desktop/mobile layout, keyboard controls, reduced-motion support and persistent progress in the current browser.
 
 ## Run locally
@@ -44,7 +45,9 @@ Documented corrections include `addi`'s signed 12-bit immediate, the complete sa
 
 ## Files
 
-- `src/content.js`: lessons, glossary and references.
+- `src/content.js`: source lesson data, Arabic notes and references.
+- `src/lesson-english.js`: English lesson explanations and translated tables/lists.
+- `src/glossary-english.js`, `src/widget-notes.js`, `src/source-notes.js`: glossary definitions, experiment notes and bilingual corrections.
 - `src/questions.js`: questions and explanations, with lesson-based provenance.
 - `src/engine.js`: pure calculations and 64-bit trace execution.
 - `src/main.js`: navigation, rendering and interactions.

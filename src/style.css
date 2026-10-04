@@ -14,3 +14,19 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 
 .practice-wrap[lang=en]{text-align:start}.practice-wrap[lang=en] .option{text-align:start}.practice-wrap[lang=en] .written-label textarea{text-align:start;direction:ltr}.practice-wrap[lang=en] .bank-count>span:last-child{text-align:end}
+.article-layout[lang=en],.home-wrap[lang=en],.page-wrap[lang=en]{text-align:start}
+[lang=en] table{text-align:start}.lesson-pager a:last-child{text-align:end}
+.lesson-arabic-title{font-size:13px;color:#9aab84;text-align:start;line-height:1.8}
+.arabic-note{margin:23px 0 0;padding:19px 22px;border:1px solid #34402b;border-inline-start:3px solid #8cae5a;border-radius:8px;background:#131b0e;text-align:start;color:#b8c6a6}
+.arabic-note-label{display:block;color:#c7e89b;font-size:12px;font-weight:600;margin-bottom:9px;letter-spacing:0}
+.arabic-note p,.arabic-note li{font-size:15px;line-height:2;color:#bac8a8;font-weight:400;letter-spacing:0}
+.arabic-note ul{margin:12px 0 0;padding-inline-start:21px}.arabic-note li{margin:7px 0}
+.arabic-note .arabic-clarification{margin-top:13px;border-top:1px solid #34402b;padding-top:12px;color:#d1ddb9}
+.notes-toggle{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:22px;padding:12px 0;font-size:13px;color:#becaad}
+.notes-toggle input{margin:0;flex-shrink:0}.notes-toggle span{font-size:12px;color:#8e9e7d}
+.hide-arabic-notes .arabic-note{display:none}.widget .arabic-note{margin-top:22px;padding:16px 18px}
+.glossary-card .arabic-note{margin-top:17px;padding:13px 15px}.glossary-card .arabic-note p{font-size:13px}.glossary-card>a{display:inline-block;margin-top:18px;font-size:12px}
+.home-wrap[dir=ltr] .banner-number{left:auto;right:45px}
+@media(max-width:1100px){.home-wrap[dir=ltr] .banner-number{right:20px}.article-heading h1{overflow-wrap:anywhere}}
+@media(max-width:800px){.home-wrap[dir=ltr] .banner-number{right:38px}.topbar nav{gap:16px}}
+@media(max-width:550px){.arabic-note{padding:17px 16px}.arabic-note p,.arabic-note li{font-size:14px}.home-wrap[dir=ltr] .banner-number{right:24px}.notes-toggle{font-size:12px;gap:8px}.article-heading h1{font-size:32px}.hero h1{font-size:48px}.hero-actions{flex-wrap:wrap}.hero-stats{gap:23px}.source-line bdi{overflow-wrap:anywhere}}

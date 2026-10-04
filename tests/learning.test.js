@@ -2,8 +2,24 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {cpuTime,weightedCPI,amdahl,bitValues,effectiveAddress,logic,programs,runStep,wrap64} from '../src/engine.js';
-import {lessons,groups,refs} from '../src/content.js';
+import {lessons,groups,refs,glossary} from '../src/content.js';
 import {questions} from '../src/questions.js';
+test('Every lesson section has English content and an Arabic explanation',()=>{
+ assert.equal(lessons.length,16);
+ assert.equal(lessons.reduce((count,l)=>count+l.sections.length,0),90);
+ for(const lesson of lessons){
+  for(const text of [lesson.title,lesson.summary,lesson.takeaway])assert.doesNotMatch(text,/\p{Script=Arabic}/u);
+  assert.match(lesson.arabic.summary,/\p{Script=Arabic}/u);
+  assert.match(lesson.arabic.takeaway,/\p{Script=Arabic}/u);
+  for(const section of lesson.sections){
+   const {arabic,...english}=section;
+   assert.doesNotMatch(JSON.stringify(english),/\p{Script=Arabic}/u,`${lesson.id}: ${section.title}`);
+   assert.match(arabic.body,/\p{Script=Arabic}/u,`${lesson.id}: ${section.title}`);
+  }
+ }
+ assert.equal(glossary.length,24);
+ for(const term of glossary){assert.ok(term[2]);assert.doesNotMatch(term[2],/\p{Script=Arabic}/u);assert.match(term.arabic,/\p{Script=Arabic}/u);}
+});
 test('All 80 questions, answers, and practice controls are entirely English',()=>{
  assert.equal(questions.length,80);
  assert.deepEqual(questions.map(q=>q.id),Array.from({length:80},(_,i)=>i+1));
