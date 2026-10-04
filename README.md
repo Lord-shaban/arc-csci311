@@ -7,7 +7,8 @@ An Arabic, RTL study companion for **CSCI311**. English technical terms stay in 
 ## What is included
 
 - 16 lessons covering Lecture 01, Lab 01, Lecture 02 and Lab 02.
-- 80 original study questions: 63 multiple-choice and 17 written/calculation questions.
+- 80 original study questions, entirely in English (prompts, options, model answers and explanations): 63 multiple-choice and 17 written/calculation questions.
+- An English question bank and quiz interface, displayed left to right.
 - A random 12-question exam with submission, scoring, explanations and mistake review.
 - 11 interactive learning tools: system components, instruction cycle, logic gates, MUX, CPU performance, weighted CPI, Amdahl's law, array addressing, signed binary, RISC-V traces and instruction formats.
 - A searchable glossary, lesson completion, source page ranges and documented corrections.

@@ -1,8 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {cpuTime,weightedCPI,amdahl,bitValues,effectiveAddress,logic,programs,runStep,wrap64} from '../src/engine.js';
 import {lessons,groups,refs} from '../src/content.js';
 import {questions} from '../src/questions.js';
+test('All 80 questions, answers, and practice controls are entirely English',()=>{
+ assert.equal(questions.length,80);
+ assert.deepEqual(questions.map(q=>q.id),Array.from({length:80},(_,i)=>i+1));
+ for(const q of questions){
+  for(const text of [q.text,q.explanation,q.answer,q.difficulty,q.source,...(q.options||[])]){
+   if(text)assert.doesNotMatch(text,/\p{Script=Arabic}/u,`Question ${q.id}`);
+  }
+  assert.ok(['Basic','Applied','Advanced'].includes(q.difficulty));
+ }
+ const main=readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
+ const practice=main.slice(main.indexOf('function questionCard('),main.indexOf('function glossaryPage('));
+ assert.doesNotMatch(practice,/\p{Script=Arabic}/u);
+});
 test('Lab02 performance examples and optimization factors',()=>{
  assert.equal(cpuTime(1e6,2,2),.001);
  assert.equal(cpuTime(.8e6,3,2.5),.00096);
