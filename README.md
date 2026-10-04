@@ -1,5 +1,7 @@
 # ARC — Computer Architecture, explained
 
+**Live site:** [arc-csci311.vercel.app](https://arc-csci311.vercel.app)
+
 An Arabic, RTL study companion for **CSCI311**. English technical terms stay in their original form. The visual direction takes inspiration from the dark editorial layout of the supplied OpenAI reference, while the content and branding are independent.
 
 ## What is included
